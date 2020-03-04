@@ -30,11 +30,6 @@ async function getMobileData(){
             pcData[index].querySelector(".p_content").appendChild(btn);
         }
     });
-
-    let btn = document.createElement("button");
-    btn.appendChild(document.createTextNode("替换楼中楼语音条"));
-    btn.addEventListener("click", () => funcList.forEach(e => e()));
-    document.querySelector("#pager_go6").parentElement.append(btn);
 }
 
 getMobileData();

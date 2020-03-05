@@ -9,11 +9,11 @@
 
 **[JQuery Ajax Request: Change User-Agent](https://stackoverflow.com/questions/5771878/jquery-ajax-request-change-user-agent)**
 
-The setRequestHeader() method
-[...]
-When the setRequestHeader(header, value) method is invoked, the user agent must run these steps: [...]
-Terminate these steps if header is a case-insensitive match for one of the following headers:
-[...]
+The setRequestHeader() method  
+[...]  
+When the setRequestHeader(header, value) method is invoked, the user agent must run these steps: [...]  
+Terminate these steps if header is a case-insensitive match for one of the following headers:  
+[...]  
 User-Agent
 
 ## 使用JS解析HTML字符串

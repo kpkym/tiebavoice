@@ -1,3 +1,17 @@
+let isPlaying;
+
+let clickAudio = (ele) => {
+    let newNode = document.createElement("div");
+    newNode.innerHTML = `<audio src="${ele.dataset.url}" controls="controls" autoplay></audio>`;
+
+    ele.appendChild(newNode, newNode.querySelector("div"));
+
+    if (isPlaying != null){
+        isPlaying.parentElement.removeChild(isPlaying);
+    }
+    isPlaying = newNode;
+}
+
 async function getMobileData(){
     let mobileHTML = document.createElement("html");
     let pcData;
@@ -12,20 +26,20 @@ async function getMobileData(){
 
     mobileData.forEach((e, index) => {
         if (e.querySelector(".content .j_voice_wrap")){
-            let newNode = document.createElement("html");
-            newNode.innerHTML = `<audio src="${e.querySelector(".content .j_voice_wrap").dataset.url}" controls="controls"></audio>`
-            let voiceEle = pcData[index].querySelector(".p_content .voice_player a");            
-            voiceEle.parentElement.replaceChild(newNode, voiceEle);
+            let voiceEleParent = pcData[index].querySelector(".p_content .voice_player a").parentElement;
+            
+            voiceEleParent.dataset.url = e.querySelector(".content .j_voice_wrap").dataset.url;
+            voiceEleParent.addEventListener("click", () => clickAudio(voiceEleParent));
+
         }
         if (e.querySelector(".j_floor_panel .j_voice_wrap")){
-            let newNode = document.createElement("html");
-            newNode.innerHTML = `<audio src="${e.querySelector(".j_floor_panel .j_voice_wrap").dataset.url}" controls="controls"></audio>`
-            
             let btn = document.createElement("button");
             btn.appendChild(document.createTextNode("替换楼中楼语音条"));
             btn.addEventListener("click", () => {
-                let voiceEle = pcData[index].querySelector(".core_reply .voice_player_inner");
-                voiceEle.parentElement.replaceChild(newNode, voiceEle);
+                let voiceEleParent = pcData[index].querySelector(".core_reply .voice_player_inner").parentElement;
+                voiceEleParent.dataset.url = e.querySelector(".j_floor_panel .j_voice_wrap").dataset.url;
+                voiceEleParent.addEventListener("click", () => clickAudio(voiceEleParent));
+                btn.parentElement.removeChild(btn);
             });
             pcData[index].querySelector(".p_content").appendChild(btn);
         }

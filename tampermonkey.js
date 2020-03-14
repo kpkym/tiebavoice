@@ -29,6 +29,7 @@ async function getMobileData(){
             let voiceEleParent = pcData[index].querySelector(".p_content .voice_player a").parentElement;
             
             voiceEleParent.dataset.url = e.querySelector(".content .j_voice_wrap").dataset.url;
+            voiceEleParent.firstElementChild.style.backgroundColor = "lightgreen";
             voiceEleParent.addEventListener("click", () => clickAudio(voiceEleParent));
 
         }
@@ -38,6 +39,7 @@ async function getMobileData(){
             btn.addEventListener("click", () => {
                 let voiceEleParent = pcData[index].querySelector(".core_reply .voice_player_inner").parentElement;
                 voiceEleParent.dataset.url = e.querySelector(".j_floor_panel .j_voice_wrap").dataset.url;
+                voiceEleParent.firstElementChild.style.backgroundColor = "lightgreen";
                 voiceEleParent.addEventListener("click", () => clickAudio(voiceEleParent));
                 btn.parentElement.removeChild(btn);
             });

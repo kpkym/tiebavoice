@@ -1,5 +1,11 @@
 let isPlaying;
 
+// 如果不是第一页则不运行
+if(location.search.split(/[?=]/).indexOf("pn") > -1
+                && Number(location.search.split(/[?=]/)[location.search.split(/[?=]/).indexOf("pn")+1]) > 1){
+    return;
+}
+
 let clickAudio = (ele) => {
     let newNode = document.createElement("div");
     newNode.innerHTML = `<audio src="${ele.dataset.url}" controls="controls" autoplay></audio>`;

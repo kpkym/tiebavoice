@@ -1,9 +1,9 @@
 version: '3.1'
 services:
   tieba:
-    restart: always
+    # restart: always
     image: nginx
-    container_name: tiebe-voice
+    container_name: tieba-voice
     volumes:
       - .:/etc/nginx/conf.d
     ports:

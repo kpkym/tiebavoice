@@ -47,13 +47,13 @@ async function getMobileData(){
             let btn = document.createElement("button");
             btn.appendChild(document.createTextNode("替换楼中楼语音条"));
             btn.addEventListener("click", () => {
-                let voiceEleParent = pcData[index].querySelector(".core_reply .voice_player_inner").parentElement;
+                let voiceEleParent = pcData[index].parentElement.querySelector(".core_reply .voice_player_inner").parentElement;
                 voiceEleParent.dataset.url = e.querySelector(".j_floor_panel .j_voice_wrap").dataset.url;
                 voiceEleParent.firstElementChild.style.backgroundColor = "lightgreen";
                 voiceEleParent.addEventListener("click", () => clickAudio(voiceEleParent));
                 btn.parentElement.removeChild(btn);
             });
-            pcData[index].querySelector(".p_content").appendChild(btn);
+            pcData[index].appendChild(btn);
         }
     });
 }

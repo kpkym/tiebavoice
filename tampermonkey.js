@@ -5,6 +5,10 @@ if(location.search.split(/[?=]/).indexOf("pn") > -1
                 && Number(location.search.split(/[?=]/)[location.search.split(/[?=]/).indexOf("pn")+1]) > 1){
     return;
 }
+// 如果没有语音条则不运行
+if (document.querySelector(".voice_player_inner") === null){
+    return;
+}
 
 let clickAudio = (ele) => {
     let newNode = document.createElement("div");
@@ -24,7 +28,7 @@ async function getMobileData(){
     let mobileData;
     mobileHTML.innerHTML = await fetch("http://localhost:14623" + location.pathname).then(e => e.text());
     mobileData = mobileHTML.querySelectorAll("li[tid] .list_main");
-    pcData = document.querySelectorAll("[data-field] .d_post_content_main");
+    pcData = document.querySelectorAll("[data-field] .p_content:not(.p_content_nameplate)");
 
     if (pcData.length !== mobileData.length){
         alert("PC跟移动端楼层不一致")
